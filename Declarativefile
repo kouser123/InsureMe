@@ -31,13 +31,13 @@ pipeline {
             }
     }
     stage('Docker Login') {
-      steps {
+    steps {
         echo 'Docker Login'
         withCredentials([usernamePassword(credentialsId: 'Dockerlogin', passwordVariable: 'dockerhub-pass', usernameVariable: 'dockerhub-user')]) {
-           sh "docker login -u ${dockerhub-user} -p ${dockerhub-pass}"
-                    }
-             }
+            sh "docker login -u ${dockerhub-user} -p ${dockerhub-pass}"
+        }
     }
+}
      stage('Push Docker Image') {
       steps {
         echo 'Push a Docker Image'
