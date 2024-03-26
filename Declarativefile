@@ -30,14 +30,14 @@ pipeline {
         sh 'docker build -t samad12/apr-insure-project:1.0 .'
             }
     }
-     stage('Docker Login') {
+    // stage('Docker Login') {
       steps {
         echo 'Docker Login'
         withCredentials([usernamePassword(credentialsId: 'Dockerlogin', passwordVariable: 'dockerhub-pass', usernameVariable: 'dockerhub-user')]) {
         sh 'docker login -u ${env.dockerhub-user} -p ${env.dockerhub-pass}'
                     }
              }
-    }
+    }//
      stage('Push Docker Image') {
       steps {
         echo 'Push a Docker Image'
