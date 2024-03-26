@@ -41,7 +41,7 @@ pipeline {
      stage('Push Docker Image') {
       steps {
         echo 'Push a Docker Image'
-        sh 'docker push samad12/apr-insure-project:1.0 .'
+        sh 'docker push samad12/apr-insure-project:1.0'
                    }
             }
     }
