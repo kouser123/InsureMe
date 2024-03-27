@@ -26,6 +26,18 @@ pipeline {
         sh 'docker build -t samad12/insure-me-app:1.0 .'
                     }
             }
+      stage('Login to Dockerhub') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'dockerlogin', passwordVariable: 'dockerpass', usernameVariable: 'dockeruser')]) {
+        sh 'docker login -u ${dockeruser} -p ${dockerpass}'
+                                                                    }
+                                }
+            }
+     stage('Push the Docker image') {
+      steps {
+        sh 'docker push samad12/insure-me-app:1.0'
+                               }
+            }
    }
 }
   
