@@ -38,6 +38,11 @@ pipeline {
         sh 'docker push samad12/insure-me-app:1.0'
                                }
             }
+      stage('Ansbile config and Deployment') {
+      steps {
+        ansiblePlaybook credentialsId: 'ansible-ssh', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible.yml', vaultTmpPath: ''
+                               }
+            }
    }
 }
   
